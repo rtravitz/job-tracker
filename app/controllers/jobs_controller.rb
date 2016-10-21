@@ -7,6 +7,7 @@ class JobsController < ApplicationController
   def new
     @company = Company.find(params[:company_id])
     @job = Job.new()
+    @categories = Category.all
   end
 
   def create
@@ -27,6 +28,7 @@ class JobsController < ApplicationController
   def edit
     @job = Job.find(params[:id])
     @company = @job.company
+    @categories = Category.all
   end
 
   def update
@@ -52,6 +54,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest)
+    params.require(:job).permit(:title, :description, :level_of_interest, :category_id)
   end
 end

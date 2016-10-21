@@ -28,6 +28,7 @@ FactoryGirl.define do
     title
     description
     level_of_interest
+    category {create(:category)}
   end
 
   factory :category do
