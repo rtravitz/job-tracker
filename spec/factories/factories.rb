@@ -12,6 +12,10 @@ FactoryGirl.define do
     "Title#{n}"
   end
 
+  sequence :category_title do |n|
+    "Category #{n}"
+  end
+
   sequence :description do |n|
     "Description#{n}"
   end
@@ -24,6 +28,10 @@ FactoryGirl.define do
     title
     description
     level_of_interest
+  end
+
+  factory :category do
+    title {generate(:category_title)}
   end
 
   factory :company do

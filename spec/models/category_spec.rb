@@ -7,6 +7,12 @@ RSpec.describe Category, type: :model do
         category = Category.new
         expect(category).to be_invalid
       end
+
+      it "is invalid without a unique title" do
+        Category.create(title: "QA")
+        category = Category.new(title: "QA")
+        expect(category).to be_invalid
+      end
     end
 
     context "valid attributes" do
