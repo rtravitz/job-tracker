@@ -23,4 +23,13 @@ RSpec.describe Comment, type: :model do
       expect(comment).to respond_to(:job)
     end
   end
+
+  describe "#reverse_chronological" do
+    it "returns dates in reverse chronological order" do
+      first = Comment.create(content: "1")
+      second = Comment.create(content: "2")
+
+      expect(Comment.reverse_chronological.first).to eq(second)
+    end
+  end
 end
