@@ -1,4 +1,4 @@
 class Contact < ActiveRecord::Base
-  validates :full_name, :email, :company_id, presence: true
+  validates :full_name, :position, :email, :company_id, presence: true
   belongs_to :company
 end
