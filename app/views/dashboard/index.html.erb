@@ -1,0 +1,10 @@
+<h1>Dashboard</h1>
+<table class="level_of_interest">
+ <th>Interest Level</th><th>Count</th>
+<% @count_by_interest.each do |level, count| %>
+  <tr>
+    <td><%= level %></td><td><%= count %></td>
+  </tr>     
+<% end %>
+</table>
+
