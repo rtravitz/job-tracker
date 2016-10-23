@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  sequence :name, ["A", "B", "C"].cycle do |n|
+  sequence :name, ["A", "B", "C", "D"].cycle do |n|
     "Company #{n}"
   end
 
@@ -20,8 +20,8 @@ FactoryGirl.define do
     "Description#{n}"
   end
 
-  sequence :level_of_interest do |n|
-    "Interest Level #{n}"
+  sequence :level_of_interest, [1, 2, 3, 4].cycle do |n|
+    n 
   end
   
   factory :job do

@@ -4,14 +4,27 @@ describe "User sees aggregated information in dashboard" do
   scenario "user sees a count of jobs at each interest level" do
     job1, job2, job3 = create_list(:job, 3)
     job1.update(level_of_interest: 3)
+    expected = Job.count_by_interest
 
     visit(dashboard_index_path)
 
     within ".level_of_interest" do
-      expect(page).to have_content(0)
-      expect(page).to have_content(2)
-      expect(page).to have_content(3)
-      expect(page).to have_content(1)
+      expect(page).to have_content(expected.keys.first)
+      expect(page).to have_content(expected.keys.last)
+      expect(page).to have_content(expected.values.first)
+      expect(page).to have_content(expected.values.last)
+    end
+  end
+
+  scenario "user sees top three companies by average interest" do
+    company1, company2, company3, company4 = create_list(:company_with_jobs, 4)
+    top_3 = Company.top_3_by_average_interest
+    visit(dashboard_index_path)
+
+    within ".top_3" do
+      expect(page).to have_content(top_3.first.name)
+      expect(page).to have_content(top_3[1].name)
+      expect(page).to have_content(top_3.last.name)
     end
   end
 end

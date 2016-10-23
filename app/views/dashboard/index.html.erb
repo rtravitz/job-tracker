@@ -7,4 +7,9 @@
   </tr>     
 <% end %>
 </table>
+<ul class="top_3">
+  <% @top_3.each do |company| %>
+    <li><%= company.name %>: <%= company.average_level_of_interest %></li>
+  <% end %>
+</ul>
 

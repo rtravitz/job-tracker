@@ -7,4 +7,13 @@ class Company < ActiveRecord::Base
   def self.by_city(desired_city)
     Company.where(city: desired_city)
   end
+
+  def self.top_3_by_average_interest
+    Company.all.sort_by{|company| company.jobs.average(:level_of_interest)}.reverse[0..2]
+  end
+
+  def average_level_of_interest
+    self.jobs.average(:level_of_interest).round(3)
+  end
+
 end
