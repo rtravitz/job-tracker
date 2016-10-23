@@ -28,18 +28,31 @@ describe Job do
 
   describe "relationships" do
     it "belongs to a company" do
-      job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
+      job = Job.new()
       expect(job).to respond_to(:company)
     end
 
     it "belongs to a category" do
-      job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
+      job = Job.new()
       expect(job).to respond_to(:category) 
     end
 
     it "has many comments" do
-      job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
+      job = Job.new()
       expect(job).to respond_to(:comments)
+    end
+  end
+
+  describe "#count_by_interest" do
+    it "returns the count of jobs for each interest level" do
+      category = create(:category)
+      Job.create(title: "1", level_of_interest: 1, description: "Wahooo", category_id: category.id)
+      Job.create(title: "2", level_of_interest: 2, description: "Wahooo", category_id: category.id)
+      Job.create(title: "3", level_of_interest: 1, description: "Wahooo", category_id: category.id)
+
+      result = Job.count_by_interest
+
+      expect(result).to eq({1=>2, 2=>1})
     end
   end
 end

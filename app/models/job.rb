@@ -3,4 +3,9 @@ class Job < ActiveRecord::Base
   belongs_to :company
   belongs_to :category
   has_many :comments
+
+  def self.count_by_interest 
+    Job.group(:level_of_interest).count
+  end
+
 end
