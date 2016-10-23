@@ -63,4 +63,16 @@ describe Company do
       expect(top_3.count).to eq(3)
     end
   end
+
+  describe "#count_by_location" do
+    it "returns the correct number of companies per location" do
+      company1, company2, company3, company4 = create_list(:company, 4)
+      company4.update(city: company1.city)
+      result = Company.count_by_location
+
+      expect(result[company1.city]).to eq(2)
+      expect(result[company2.city]).to eq(1)
+      expect(result[company3.city]).to eq(1)
+    end
+  end
 end

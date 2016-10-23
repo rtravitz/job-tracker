@@ -12,6 +12,10 @@ class Company < ActiveRecord::Base
     Company.all.sort_by{|company| company.jobs.average(:level_of_interest)}.reverse[0..2]
   end
 
+  def self.count_by_location
+    Company.group(:city).count
+  end
+
   def average_level_of_interest
     self.jobs.average(:level_of_interest).round(3)
   end

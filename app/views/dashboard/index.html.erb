@@ -12,4 +12,9 @@
     <li><%= company.name %>: <%= company.average_level_of_interest %></li>
   <% end %>
 </ul>
+<ul class="by_location">
+   <% @count_by_location.each do |city, count|  %>
+     <li><%= link_to city, "#{companies_path}/?location=#{city}" %>: <%= count %></li>
+   <% end %>
+</ul>
 

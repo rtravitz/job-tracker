@@ -2,6 +2,8 @@ class CompaniesController < ApplicationController
   def index
     if params[:sort]
       @companies = Company.by_city(params[:sort])
+    elsif params[:location]
+      @companies = Company.where(city: params[:location])
     else
       @companies = Company.all
     end
