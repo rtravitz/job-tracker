@@ -39,4 +39,16 @@ describe Company do
       expect(company).to respond_to(:contacts)
     end
   end
+
+  describe "#find_by_city" do
+    it "returns the correct cities" do
+      Company.create(name: "Company 1", city: "Oakland") 
+      Company.create(name: "Company 2", city: "Seattle") 
+      Company.create(name: "Company 3", city: "Oakland") 
+
+      returned = Company.by_city("Oakland")
+
+      expect(returned.count).to eq(2)
+    end
+  end
 end
