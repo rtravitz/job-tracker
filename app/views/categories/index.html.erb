@@ -1,8 +1,12 @@
 <h2>All Categories</h2>
 <% @categories.each do |category| %>
   <ul class = category_<%=category.id %>>
-    <li><%= link_to category.title, category %></li>
-    <li><%= link_to "Edit", edit_category_path(category) %></li>
-    <li><%= link_to "Delete", category_path(category), method: "delete" %></li>
+    <li class="list-unstyled">
+      <h3><%= link_to category.title, category %></h3>
+      <div class="btn-group">
+        <%= link_to "Edit", edit_category_path(category), class: "btn btn-success" %>
+        <%= link_to "Delete", category_path(category), method: "delete", class: "btn btn-danger" %>
+      </div>
+    </li>
   </ul>
 <% end %>

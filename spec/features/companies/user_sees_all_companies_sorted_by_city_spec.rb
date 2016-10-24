@@ -8,7 +8,9 @@ describe "User sees all companies by selected city" do
 
     visit("#{companies_path}?sort=Oakland")
     
-    expect(page).to have_selector('ul', count: 2)
-    expect(page).to_not have_content("Seattle")
+    within(".companies") do
+      expect(page).to have_selector('ul', count: 2)
+      expect(page).to_not have_content("Seattle")
+    end
   end
 end
