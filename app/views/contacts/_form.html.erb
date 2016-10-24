@@ -1,13 +1,21 @@
-<h3>Add a Contact</h3>
-<%= form_for [@contact] do |f| %>
-  <%= f.label :full_name %>
-  <%= f.text_field :full_name %><br>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.label :position %>
-  <%= f.text_field :position %><br>
-  <%= hidden_field_tag :company_id, @company.id %>
-  
-  <%= f.submit %>
-<% end %>
+<div class="row well">
+  <h3>Add a Contact</h3>
+  <%= form_for [@contact] do |f| %>
+    <div class="form-group col-md-3">
+      <%= f.label :full_name %>
+      <%= f.text_field :full_name %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= f.label :position %>
+      <%= f.text_field :position %>
+    </div>
+    <%= hidden_field_tag :company_id, @company.id %>
+    
+    <%= f.submit class: "btn btn-primary col-md-3" %>
+  <% end %>
+</div>
 
