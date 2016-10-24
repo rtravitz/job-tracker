@@ -22,7 +22,7 @@
   </div>
 
   <div class="col-md-3 col-md-offset-1 text-center well">
-    <h3>Companies in Each Location</h3>
+    <h3>Jobs in Each Location</h3>
     <ul class="by_location list-unstyled">
        <% @count_by_location.each do |city, count|  %>
          <li><%= link_to city, "#{companies_path}/?location=#{city}" %>: <%= count %></li>
