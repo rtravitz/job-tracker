@@ -55,4 +55,18 @@ describe Job do
       expect(result).to eq({1=>2, 2=>1})
     end
   end
+
+  describe "#sort_by_interest" do
+    it "returns the jobs by order of descending interest" do
+      category = create(:category)
+      Job.create(title: "1", level_of_interest: 2, description: "Wahooo", category_id: category.id)
+      Job.create(title: "2", level_of_interest: 3, description: "Wahooo", category_id: category.id)
+      Job.create(title: "3", level_of_interest: 1, description: "Wahooo", category_id: category.id)
+
+      result = Job.sort_by_interest
+
+      expect(result.first.title).to eq("2")
+      expect(result.last.title).to eq("3")
+    end
+  end
 end

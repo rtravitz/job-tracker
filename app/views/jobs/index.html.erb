@@ -1,11 +1,13 @@
 All Jobs for <strong><%= @company.name %></strong>
 
-<% @jobs.each do |job| %>
-  <ul class=job_<%= job.id %>>
-    <%= link_to job.title, company_job_path(@company, job.id) %> at <%= job.company.name %>
-    <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
-  </ul>
-<% end %>
+<div class="jobs">
+  <% @jobs.each do |job| %>
+    <ul class=job_<%= job.id %>>
+      <%= link_to job.title, company_job_path(@company, job.id) %> at <%= job.company.name %>
+      <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
+    </ul>
+  <% end %>
+</div>
 
 <%= render partial: 'contacts/form' %>
 <%= render partial: 'contacts/contact', collection: @company.contacts %>

@@ -43,5 +43,6 @@ describe "User visits the dashboard" do
       expect(page).to have_current_path("#{companies_path}/?location=#{company1.city}")
     end
   end
+
     
 end
