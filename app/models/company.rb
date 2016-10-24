@@ -9,7 +9,11 @@ class Company < ActiveRecord::Base
   end
 
   def self.top_3_by_average_interest
-    Company.all.sort_by do |company|
+    company_list = Company.all.reduce(Array.new) do |list, company|
+      list << company unless company.jobs.empty?
+      list
+    end
+    company_list.sort_by do |company|
       company.jobs.average(:level_of_interest)
     end.reverse[0..2]
   end
