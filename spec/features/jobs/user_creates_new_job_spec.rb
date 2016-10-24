@@ -4,7 +4,8 @@ describe "User creates a new job" do
   scenario "a user can create a new job" do
     company = Company.create(name: "ESPN", city: "NYC")
     category1, category2, category3 = create_list(:category, 3)
-    visit new_company_job_path(company)
+    visit company_jobs_path(company)
+    click_link("Add a New Job")
     expect(page).to have_selector(:link_or_button, "Create New Category")
 
     fill_in "job[title]", with: "Developer"

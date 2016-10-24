@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe "User creates a new category" do
   scenario "a user can create a new category" do
-    visit new_category_path
+    visit categories_path
+    click_link("Add a Category")
 
     fill_in "category[title]", with: "QA"
     click_button "Create"
