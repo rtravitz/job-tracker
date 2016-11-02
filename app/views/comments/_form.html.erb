@@ -1,0 +1,7 @@
+<h3>Post a Comment</h3>
+<%= form_for [@comment] do |f| %>
+  <%= f.text_field :content %>
+  <%= hidden_field_tag :job_id, @job.id %>
+  
+  <%= f.submit %>
+<% end %>

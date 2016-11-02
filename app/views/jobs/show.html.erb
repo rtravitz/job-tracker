@@ -1,10 +1,21 @@
-Title: <%= @job.title %>
-<br>
+<div class="well">
+  <strong>Title:</strong> <%= @job.title %>
+  <br>
 
-Description: <%= @job.description %>
-<br>
+  <strong>Description:</strong> <%= @job.description %>
+  <br>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+  <strong>Level of Interest:</strong> <%= @job.level_of_interest %>
+  <br>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+  <strong>Category:</strong> <%= @job.category.title %>
+  <br>
+
+  <strong>Company:</strong> <%= link_to @job.company.name, company_path(@job.company) %>
+
+  <p><%= link_to "Edit", edit_company_job_path(@job.company, @job), class: "btn btn-success" %></p>
+</div>
+
+<%= render partial: 'comments/form' %>
+<hr>
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse_chronological %>

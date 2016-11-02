@@ -1,9 +1,19 @@
-<h3>All Companies</h3>
-
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
+<%= link_to "Add a New Company", new_company_path, class: "btn btn-success pull-right" %>
+<%= form_tag("/companies", method: "get") do %>
+  <%= label_tag(:sort, "Search companies by city: ") %>
+  <%= text_field_tag(:sort) %>
+  <%= submit_tag("Search") %>
 <% end %>
+<h3>All Companies</h3>
+<hr>
+<div class="companies">
+  <% @companies.each do |company| %>
+    <ul class="company_<%= company.id %> col-md-4">
+      <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
+      <div class="btn-group">
+        <%= link_to "Edit", edit_company_path(company), class: "btn btn-success" %>
+        <%= link_to "Delete", company_path(company), method: "delete", class: "btn btn-danger" %>
+      </div>
+    </ul>
+  <% end %>
+</div>
